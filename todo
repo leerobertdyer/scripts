@@ -1,0 +1,7 @@
+echo "What would you like to add?"
+read TODO
+
+echo "- [ ] $TODO" >> ~/Desktop/TODO.txt
+
+echo  "' $TODO '\n\n added to your todo list! 👏"
+
