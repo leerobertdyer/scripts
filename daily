@@ -1,0 +1,19 @@
+# A daily task tracker I can run to create README files
+
+export DATE=$(date +"%a_%m_%d_%Y")
+export FILENAME=$(echo "$DATE" | tr ' ' '_').md
+
+echo "${FILENAME} is being generated..."
+
+touch ~/Desktop/DailyReports/${FILENAME}
+
+while IFS= read -r line; do
+    echo "$line" >> ~/Desktop/DailyReports/${FILENAME}
+done < ~/Desktop/TASKS.txt
+
+cat ~/Desktop/DailyReports/${FILENAME}
+
+echo "${FILENAME} has been saved... Now clearing TASKS.txt"
+
+printf "" > ~/Desktop/TASKS.txt
+

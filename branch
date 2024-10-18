@@ -1,0 +1,9 @@
+echo "What would you like to name your branch?"
+read BRANCH
+if [ "$BRANCH" = "exit" ] || [ "$BRANCH" = "no" ] || [ "$BRANCH" = "quit" ]
+then
+echo "No branch created, exiting script..."
+else
+git checkout -b $BRANCH
+fi
+

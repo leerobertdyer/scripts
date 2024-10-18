@@ -1,0 +1,13 @@
+# A task generator to keep track of my daily work items.
+
+TIME=$(date +%H:%M)
+echo "Enter your task: "
+read TASK
+if [ "$TASK" = "" ]
+then
+  echo "Task abandoned"
+else
+  echo "# ${TIME}: \n- ${TASK}" >> ~/Desktop/TASKS.txt
+  echo "" >> ~/Desktop/TASKS.txt
+  echo "Task has been added."
+fi

@@ -1,0 +1,9 @@
+echo "What is your commit message?"
+read INPUT
+
+if [ "$INPUT" = "exit" ] || [ "$INPUT" = "no" ] || [ "$INPUT" = "quit" ]
+then
+    echo "Commit abandoned. Exiting script..."
+else
+    git commit -m "$INPUT"
+fi
