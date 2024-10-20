@@ -5,3 +5,4 @@ cd $(scripts)
 
 echo "You are now in your personal scripts directory:\n$(scripts)"
 ls
+
