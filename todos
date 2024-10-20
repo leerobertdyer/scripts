@@ -1,1 +1,8 @@
-cat ~/Desktop/TODO.txt
+# Cats the current todo list or heckles you if you don't have one.
+
+if [ ! -f ~/Desktop/TODO.txt ]
+then
+  echo "Your todo list is blank. Nothing ventured nothing gained..."
+else
+  cat ~/Desktop/TODO.txt
+fi

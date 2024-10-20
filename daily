@@ -1,9 +1,19 @@
-# A daily task tracker I can run to create README files
+# Generates a daily report using current TASKS.txt file
 
-export DATE=$(date +"%Y %b_%a_%m_%d")
-export FILENAME=$(echo "$DATE" | tr ' ' '_').md
+export DATE=$(date +"%Y_%m_%d_%a")
+export FILENAME=$(echo "$DATE").md
 
 echo "${FILENAME} is being generated..."
+
+if [ ! -d ~/Desktop/DailyReports ]
+then
+  mkdir ~/Desktop/DailyReports 
+fi
+
+if [ ! -f ~/Desktop/TASKS.txt ]
+then
+  touch ~/Desktop/TASKS.txt
+fi
 
 touch ~/Desktop/DailyReports/${FILENAME}
 

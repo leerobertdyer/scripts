@@ -1,3 +1,6 @@
-chmod +x /Users/ldyer/Desktop/shell/scripts/*
-echo "all files in /Users/ldyer/Desktop/shell/scripts/ are now executable..."
+# Give all scripts executable mode for current user
+
+SCRIPT_DIR=$(dirname "$0")
+chmod +x "${SCRIPT_DIR}"/*
+echo "all files in ${SCRIPT_DIR} are now executable..."
 

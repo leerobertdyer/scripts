@@ -1,7 +1,19 @@
+# A todo generator similar to tasks script
+
 echo "What would you like to add?"
 read TODO
 
-echo "- [ ] $TODO" >> ~/Desktop/TODO.txt
+if [ ! -n "$TODO" ]
+then
+  echo "Nothing entered. Exiting script..."
+else
 
-echo  "' $TODO '\n\n added to your todo list! 👏"
+  if [ ! -f ~/Desktop/TODO.txt ]
+  then
+    touch ~/Desktop/TODO.txt
+  fi
 
+  echo "- [ ] $TODO" >> ~/Desktop/TODO.txt
+
+  echo  "' $TODO '\n\n added to your todo list! 👏"
+fi

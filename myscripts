@@ -1,1 +1,13 @@
-ls ~/Desktop/shell/scripts
+# A loop that gets the first comment and name of all custom scripts
+
+for script in $(ls $(scripts))
+do
+  if [ -f $script ] 
+  then
+    first_comment=$(grep '^#' "$script" | head -n 1)
+    if [ -n "$first_comment" ]
+    then
+      echo "\n#######  $script  #######\n$first_comment"
+    fi
+  fi
+done

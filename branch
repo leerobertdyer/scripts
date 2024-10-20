@@ -1,9 +1,14 @@
+# A git shortcut for making a new branch
+
 echo "What would you like to name your branch?"
 read BRANCH
-if [ "$BRANCH" = "exit" ] || [ "$BRANCH" = "no" ] || [ "$BRANCH" = "quit" ]
+if [ "$BRANCH" = "exit" ] || \
+   [ "$BRANCH" = "no" ] || \
+   [ "$BRANCH" = "quit" ] || \
+   [ ! "$BRANCH" ] 
 then
-echo "No branch created, exiting script..."
+  echo "No branch created, exiting script..."
 else
-git checkout -b $BRANCH
+  git checkout -b $BRANCH
 fi
 

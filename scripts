@@ -1,0 +1,6 @@
+# Lists the directory where custom scripts are stored. 
+# Warning: changing this name will result in failure of several other scripts
+# Including myscripts 
+
+SCRIPT_DIR=$(dirname "$0")
+echo $SCRIPT_DIR

@@ -1,7 +1,12 @@
+# A simple git commit script to generate a commit message
+
 echo "What is your commit message?"
 read INPUT
 
-if [ "$INPUT" = "exit" ] || [ "$INPUT" = "no" ] || [ "$INPUT" = "quit" ]
+if [ "$INPUT" = "exit" ] || \
+   [ "$INPUT" = "no" ] || \
+   [ "$INPUT" = "quit" ] || \
+   [ ! "$INPUT" ]
 then
     echo "Commit abandoned. Exiting script..."
 else

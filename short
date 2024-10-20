@@ -1,3 +1,6 @@
+# A list of keyboard shortcuts
+# Note: i'm using Karibeaner Elements to bind CAPS = ctr  + opt + cmd
+
 echo "CAPS + ; = ~"
 echo "CAPS + Q = quit all apps"
 echo "CAPS + 1 = open terminal
