@@ -1,4 +1,4 @@
-# Generates a daily report using current TASKS.txt file
+# Generates a daily report using current .TASKS.txt file
 
 export DATE=$(date +"%Y_%m_%d_%a")
 export FILENAME=$(echo "$DATE").md
@@ -10,20 +10,17 @@ then
   mkdir ~/Desktop/DailyReports 
 fi
 
-if [ ! -f ~/Desktop/TASKS.txt ]
-then
-  touch ~/Desktop/TASKS.txt
-fi
+touch ~/Desktop/.TASKS.txt
 
 touch ~/Desktop/DailyReports/${FILENAME}
 
 while IFS= read -r line; do
     echo "$line" >> ~/Desktop/DailyReports/${FILENAME}
-done < ~/Desktop/TASKS.txt
+done < ~/Desktop/.TASKS.txt
 
 cat ~/Desktop/DailyReports/${FILENAME}
 
-echo "${FILENAME} has been saved... Now clearing TASKS.txt"
+echo "${FILENAME} has been saved... Now clearing .TASKS.txt"
 
-printf "" > ~/Desktop/TASKS.txt
+printf "" > ~/Desktop/.TASKS.txt
 

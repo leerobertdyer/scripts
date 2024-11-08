@@ -7,7 +7,8 @@ if [ "$TASK" = "" ]
 then
   echo "Task abandoned"
 else
-  echo "# ${TIME}: \n- ${TASK}" >> ~/Desktop/TASKS.txt
-  echo "" >> ~/Desktop/TASKS.txt
+  touch ~/Desktop/.TASKS.txt
+  echo "# ${TIME}: \n- ${TASK}" >> ~/Desktop/.TASKS.txt
+  echo "" >> ~/Desktop/.TASKS.txt
   echo "Task has been added."
 fi

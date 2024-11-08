@@ -8,12 +8,9 @@ then
   echo "Nothing entered. Exiting script..."
 else
 
-  if [ ! -f ~/Desktop/TODO.txt ]
-  then
-    touch ~/Desktop/TODO.txt
-  fi
+touch ~/Desktop/.TODO.txt
 
-  echo "- [ ] $TODO" >> ~/Desktop/TODO.txt
+  echo "- [ ] $TODO" >> ~/Desktop/.TODO.txt
 
   echo  "' $TODO '\n\n added to your todo list! 👏"
 fi

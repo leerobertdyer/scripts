@@ -1,0 +1,10 @@
+# This script is just me learning how to use param vars in a script
+
+echo "$ + 0 gives you the pwd of file: $0"
+
+if [ ! $1 ]; then
+	echo "You must include at least one parameter"
+else
+	echo "Your param is $1"
+fi
+echo $2

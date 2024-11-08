@@ -1,4 +1,4 @@
 # A simple cat command to show all current tasks
 
-cat ~/Desktop/TASKS.txt
+cat ~/Desktop/.TASKS.txt
 
