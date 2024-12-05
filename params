@@ -5,6 +5,9 @@ echo "$ + 0 gives you the pwd of file: $0"
 if [ ! $1 ]; then
 	echo "You must include at least one parameter"
 else
-	echo "Your param is $1"
+	echo "Your first param is $1"
 fi
-echo $2
+
+# For any remaining params use 2-9 or @ symbol for all:
+echo "All remaining commands: \n"
+echo $@

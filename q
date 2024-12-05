@@ -1,11 +1,8 @@
 # A question generator to keep track of my current questions
 
-TIME=$(date +%H:%M)
+TIME=$(date +%D_%H:%M)
 
-if [ ! -f ~/Desktop/QUESTIONS.txt ]
-then
-  touch ~/Desktop/QUESTIONS.txt
-fi
+touch ~/Desktop/.QUESTIONS.txt
 
 echo "Enter your question: "
 read QUEST 
@@ -17,10 +14,10 @@ else
   if [ "$QUEST" = "?" ]
   then
     printf "Here are your current questions: \n"
-    cat ~/Desktop/QUESTIONS.txt
+    cat ~/Desktop/.QUESTIONS.txt
   else 
-    echo "# ${TIME}: \n- ${QUEST}" >> ~/Desktop/QUESTIONS.txt
-    echo "" >> ~/Desktop/QUESTIONS.txt
+    echo "# ${TIME}: \n- ${QUEST}" >> ~/Desktop/.QUESTIONS.txt
+    echo "" >> ~/Desktop/.QUESTIONS.txt
     echo "Question has been added."
   fi
 fi 
