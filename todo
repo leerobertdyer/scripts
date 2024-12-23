@@ -9,8 +9,11 @@ then
 else
 
 touch ~/Desktop/.TODO.txt
-
-  echo "- [ ] $TODO" >> ~/Desktop/.TODO.txt
+if [ "$TODO" = "!" ]
+  then vim ~/Desktop/.TODO.txt
+else
+  echo "- $TODO" >> ~/Desktop/.TODO.txt
 
   echo  "' $TODO '\n\n added to your todo list! 👏"
+fi
 fi
