@@ -1,6 +1,32 @@
-# A list of keyboard shortcuts
-# Note: i'm using Karibeaner Elements to bind CAPS = ctr  + opt + cmd
+# Shortcuts to open specific repos 
 
-echo "CAPS + ; = ~"
-echo "CAPS + Q = quit all apps"
-echo "CAPS + 1 = open terminal
+function listAndOpen() {
+    echo $(ls)
+    read -p "Which Repo? " repo    
+    if [ -z "$repo" ]; then
+        echo "No Repo selected, exiting script"
+        exit 1
+    fi
+    code $(ls | grep "$repo")
+}
+
+if [ -z "$1" ]; then
+    echo "No group selected, exiting script"
+    exit 1
+elif [ "$1" = "rtm" ]; then
+    echo "RTM selected"
+    cd ~/Desktop/code/git/rtm
+    listAndOpen
+elif [ "$1" = "coda" ]; then
+    echo "Coda selected"
+    cd ~/Desktop/code/git/coda
+    listAndOpen
+elif [ "$1" = "tf" ]; then
+    echo "Terraform selected"
+    cd ~/Desktop/code/git/tf
+    listAndOpen
+elif [ "$1" = "ldyer" ]; then
+    echo "ldyer selecter"
+    cd ~/Desktop/code/ldyer
+    listAndOpen
+fi
