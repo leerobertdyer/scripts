@@ -29,4 +29,9 @@ elif [ "$1" = "ldyer" ]; then
     echo "ldyer selecter"
     cd ~/Desktop/code/ldyer
     listAndOpen
+elif [ "$1" = "cfa" ]; then
+    code ~/Desktop/code/git/go/concert-fission-api
+elif [ "$1" = "checkout" ]; then
+    cd ~/Desktop/code/git/checkout
+    listAndOpen
 fi
