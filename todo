@@ -1,5 +1,7 @@
 # A todo generator similar to tasks script
 
+touch ~/Desktop/.TODO.txt
+
 echo "What would you like to add?"
 read TODO
 

@@ -1,0 +1,25 @@
+# ss = Screen Shots - a tool for quick organization and cleanup of screenshots folders
+
+# Step 1 rm all files that begin with "Screenshot "
+cd ~/Desktop/screenshots
+
+# Check if there are any files matching the pattern
+if ls Screenshot* 1> /dev/null 2>&1; then # redirects stdout to /dev/null and stderr to the same (2>&1) basically suppresses the standard output and error output
+    x=0
+    for file in Screenshot*; do
+        x=$((x+1))
+    done
+    echo "${x} files to be removed. Is that ok? (y/n)"
+    read answer
+    if [ "$answer" == "y" ]; then
+        rm Screenshot*
+    elif [ "$answer" == "n" ]; then
+        echo "Abandoning script..."
+        exit
+    fi
+else
+    echo "No files to remove."
+fi
+# Step 2 create folders for all different modified dates for remaining files
+# Step 3 move all respective files into these folders
+# Step 4 Allow paramater value ! followed by "new name of screenshot" to allow rewriting name of most recent screenshot
