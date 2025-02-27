@@ -7,7 +7,7 @@ function listAndOpen() {
         echo "No Repo selected, exiting script"
         exit 1
     fi
-    code $(ls | grep "$repo")
+    windsurf $(ls | grep "$repo")
 }
 
 if [ -z "$1" ]; then
