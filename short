@@ -1,6 +1,10 @@
 # Shortcuts to open specific repos 
 
 function listAndOpen() {
+    if [ z $2 ]; then
+	windsurf $(ls | grep "$2")
+	exit 0
+    fi
     echo $(ls)
     read -p "Which Repo? " repo    
     if [ -z "$repo" ]; then
