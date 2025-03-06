@@ -39,4 +39,7 @@ elif [ "$1" = "cfa" ]; then
 elif [ "$1" = "checkout" ]; then
     cd ~/Desktop/code/git/checkout
     listAndOpen $1 $2
+elif [ "$1" = "work" ]; then
+    cd ~/Desktop/code/workspaces
+    listAndOpen $1 $2
 fi
