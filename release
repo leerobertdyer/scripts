@@ -1,0 +1,23 @@
+# opens a new release page for the current branch
+
+# Get the current repository URL
+repo_url=$(git config --get remote.origin.url)
+
+# Transform SSH URL to HTTPS format if needed
+if [[ $repo_url == git@* ]]; then
+# Convert from git@github.com:username/repo.git to https://github.com/username/repo
+repo_url=${repo_url/git@github.com:/https:\/\/github.com\/}
+repo_url=${repo_url/.git/}
+elif [[ $repo_url == https://github.com/* ]]; then
+# Already in HTTPS format, just remove .git if present
+repo_url=${repo_url/.git/}
+fi
+
+# Add /releases/new to open the new release page
+release_url="${repo_url}/releases/new"
+
+# Get current branch name to pre-fill tag field
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+echo "Opening release page for branch: $branch"
+open "$release_url"
