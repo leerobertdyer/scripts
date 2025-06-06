@@ -3,6 +3,13 @@
 # Step 1 rm all files that begin with "Screenshot "
 cd ~/Desktop/screenshots
 
+# If param1 = '.' open ss folder
+if [ "$1" = "." ]; then
+	echo "opening ~/Desktop/screenshots"
+	open .
+	exit 0
+fi
+
 # Check if there are any files matching the pattern
 if ls Screenshot* 1> /dev/null 2>&1; then # redirects stdout to /dev/null and stderr to the same (2>&1) basically suppresses the standard output and error output
     x=0
