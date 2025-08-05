@@ -53,3 +53,5 @@ alias py='python3'
 alias hotvpn="sudo networksetup -setmanual Wi-Fi 172.20.10.3 255.255.255.240 172.20.10.1"
 alias nothotvpn="sudo networksetup -setdhcp Wi-Fi"
 
+alias base='pbpaste | base64 | pbcopy ; echo "$(pbpaste)"'
+alias unbase='pbpaste | base64 --decode | pbcopy ; echo "$(pbpaste)"'
