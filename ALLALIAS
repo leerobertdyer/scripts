@@ -1,0 +1,55 @@
+# A list of current Alias
+
+######     Aliases     ######
+
+  #  Base64 paste/encode/copy & paste/decode/copy
+unbase='pbpaste | base64 --decode | pbcopy'
+base='pbpaste | base64 | pbcopy'
+
+  # terraform shortcut
+alias tf='terraform'
+
+  # shortcut for notepad
+alias notes='open -a Notes'
+
+  # shortcut for safari
+alias safari='open -a Safari'
+
+  # shortcut for youtube in profile1 of chrome
+alias tube='open -n -a "Google Chrome" --args --profile-directory="Profile 1" https://www.youtube.com'
+
+  # shortcut for chrome
+alias chrome='open -a "Google Chrome"'
+
+  # shortcut for Slack
+alias slack='open -a Slack'
+
+ # shortcut for cds command in custom scripts:
+alias cds='source cds'
+
+ # shortcut for getting current time
+alias now='date +"%T"'
+
+alias nowutc='date -u +"%T"'
+
+ # shortcut for getting utc time in terminal
+ alias utc='date -u'
+
+   #####   NPM ALIAS   #####
+alias dev="npm run dev"
+alias start="npm run start"
+
+
+   #####    IDE Alias  #####
+alias sand="cd /Users/ldyer/Desktop/code/sandbox/sand && windsurf ."
+
+alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0_422); export PATH=$JAVA_HOME/bin:$PATH'
+alias java17='export JAVA_HOME=$(/usr/libexec/java_home -v 17); export PATH=$JAVA_HOME/bin:$PATH'
+
+# PYTHON
+alias py='python3'
+
+# Allow HotSpot VPN Access
+alias hotvpn="sudo networksetup -setmanual Wi-Fi 172.20.10.3 255.255.255.240 172.20.10.1"
+alias nothotvpn="sudo networksetup -setdhcp Wi-Fi"
+

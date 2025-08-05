@@ -42,4 +42,7 @@ elif [ "$1" = "checkout" ]; then
 elif [ "$1" = "work" ]; then
     cd ~/Desktop/code/workspaces
     listAndOpen $1 $2
+elif [ "$1" = "coda" ]; then
+    cd ~/Desktop/code/git/coda
+    listAndOpen $1 $2
 fi

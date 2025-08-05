@@ -1,0 +1,5 @@
+# Utility shell functions
+
+function typeExists() {
+	type "$1" &>/dev/null;
+}
