@@ -3,3 +3,23 @@
 function typeExists() {
 	type "$1" &>/dev/null;
 }
+
+urlencode() {
+  local input="$1"
+  local output=""
+  local i char ord
+
+  for (( i = 1; i <= ${#input}; i++ )); do
+    char="${input[$i]}"
+    case "$char" in
+      [a-zA-Z0-9.~_-]) output+="$char" ;;
+      *)
+        ord=$(printf '%d' "'$char")
+        output+=$(printf '%%%02X' "$ord")
+        ;;
+    esac
+  done
+
+  echo "$output" | pbcopy
+  echo "$output"
+}
