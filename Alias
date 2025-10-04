@@ -1,7 +1,7 @@
 #!/bin/zsh
 # Quick shortcut for adding an alias to ~./zshrc
 
-source ~/Desktop/shell/scripts/FUNCS
+source $(scripts)/FUNCS
 
 checkIfTypeExists() {
 	if typeExists "$1"; then
@@ -18,7 +18,7 @@ addToZshAndAliasFile() {
 		echo "No script added. Terminating..."
 		exit 1
 	fi
-	echo "alias $1='$SCRIPT'" | tee -a ~/.zshrc >> ~/Desktop/shell/scripts/ALLALIAS
+	echo "alias $1='$SCRIPT'" | tee -a ~/.zshrc >> $(scripts)/ALLALIAS
 	echo "alias $1 saved to zshrc and ALIAS file."
 	echo "source ~/.zshrc" | pbcopy
 	echo "You will need to re-source. Hit paste+enter to finalize.."
@@ -37,5 +37,3 @@ if [ -z "$1" ]; then
 fi
 checkIfTypeExists "$1"
 addToZshAndAliasFile $1
-
-alias fuck=echo "FUCK ME IT WORKS!"
