@@ -56,3 +56,6 @@ alias nothotvpn="sudo networksetup -setdhcp Wi-Fi"
 alias base='pbpaste | base64 | pbcopy ; echo "$(pbpaste)"'
 alias unbase='pbpaste | base64 --decode | pbcopy ; echo "$(pbpaste)"'
 alias test='echo "holy hell it works"'
+alias gen='npm run generate'
+alias build='npm run build'
+alias lint='npm run lint'

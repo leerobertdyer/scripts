@@ -1,6 +1,6 @@
 # ss = Screen Shots - a tool for quick organization and cleanup of screenshots folders
 
-# Step 1 rm all files that begin with "Screenshot "
+# Step 1 rm all files that begin with "Screen"
 cd ~/Desktop/screenshots
 
 # If param1 = '.' open ss folder
@@ -11,7 +11,8 @@ if [ "$1" = "." ]; then
 fi
 
 # Check if there are any files matching the pattern
-if ls Screenshot* 1> /dev/null 2>&1; then # redirects stdout to /dev/null and stderr to the same (2>&1) basically suppresses the standard output and error output
+# redirects stdout to /dev/null and stderr to the same (2>&1) basically suppresses the standard output and error output
+if ls Screen* 1> /dev/null 2>&1; then 
     x=0
     for file in Screenshot*; do
         x=$((x+1))
@@ -19,7 +20,7 @@ if ls Screenshot* 1> /dev/null 2>&1; then # redirects stdout to /dev/null and st
     echo "${x} files to be removed. Is that ok? (y/n)"
     read answer
     if [ "$answer" == "y" ]; then
-        rm Screenshot*
+        rm Screen*
     elif [ "$answer" == "n" ]; then
         echo "Abandoning script..."
         exit
