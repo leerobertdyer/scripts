@@ -1,0 +1,25 @@
+#!/bin/bash
+
+export AWS_PROFILE=ion-prod
+export AWS_REGION=us-east-1
+
+instanceId=$(aws ec2 describe-instances \
+     --filters "Name=tag:aws:autoscaling:groupName,Values=bastion*" \
+     --query "Reservations[*].Instances[?State.Name == 'running'].InstanceId | [1]" \
+     --output text)
+
+host=ion-production-0.cil42qu4w0pt.us-east-1.rds.amazonaws.com
+servicePort=5432
+localPort=5431
+
+echo
+echo "An AWS SSM instance with ID $instanceId was found"
+
+echo --target $instanceId \
+     --document-name AWS-StartPortForwardingSessionToRemoteHost \
+     --parameters host="${host}",portNumber="${servicePort}",localPortNumber="${localPort}"
+
+aws ssm start-session \
+     --target $instanceId \
+     --document-name AWS-StartPortForwardingSessionToRemoteHost \
+     --parameters host="${host}",portNumber="${servicePort}",localPortNumber="${localPort}"
