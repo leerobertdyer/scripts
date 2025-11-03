@@ -5,7 +5,7 @@ export AWS_REGION=us-east-1
 
 instanceId=$(aws ec2 describe-instances \
      --filters "Name=tag:aws:autoscaling:groupName,Values=bastion*" \
-     --query "Reservations[*].Instances[?State.Name == 'running'].InstanceId | [1]" \
+     --query "Reservations[*].Instances[?State.Name == 'running'].InstanceId | [0]" \
      --output text)
 
 host=ion-production-0.cil42qu4w0pt.us-east-1.rds.amazonaws.com
