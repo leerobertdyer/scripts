@@ -4,11 +4,11 @@ export AWS_PROFILE=ion-prod
 export AWS_REGION=us-east-1
 
 instanceId=$(aws ec2 describe-instances \
-     --filters "Name=tag:aws:autoscaling:groupName,Values=bastion*" \
-     --query "Reservations[*].Instances[?State.Name == 'running'].InstanceId | [0]" \
+     --filters "Name=tag:aws:autoscaling:groupName,Values=bastion-bastion-production" \
+     --query "Reservations[*].Instances[?State.Name == 'running'].InstanceId " \
      --output text)
 
-host=ion-production-0.cil42qu4w0pt.us-east-1.rds.amazonaws.com
+host=ion-production.cluster-cil42qu4w0pt.us-east-1.rds.amazonaws.com
 servicePort=5432
 localPort=5431
 

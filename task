@@ -3,7 +3,7 @@
 if [[ $1 == "!" ]]; then
 	vim ~/Desktop/.TASKS.txt
 else
-TIME=$(date +%H:%M)
+TIME=$(date +%c)
     echo "Enter your task: "
     read TASK
     if [ "$TASK" = "" ]
