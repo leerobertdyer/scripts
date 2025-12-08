@@ -1,11 +1,13 @@
 #!/bin/bash
 
-export AWS_PROFILE=ion-prod
-export AWS_REGION=us-east-1
+PROFILE="ion-prod"
+REGION="us-east-1"
 
 instanceId=$(aws ec2 describe-instances \
+     --profile "$PROFILE" \
+     --region "$REGION" \
      --filters "Name=tag:aws:autoscaling:groupName,Values=bastion-bastion-production" \
-     --query "Reservations[*].Instances[?State.Name == 'running'].InstanceId " \
+     --query "Reservations[*].Instances[?State.Name == 'running'].InstanceId" \
      --output text)
 
 host=ion-production.cluster-cil42qu4w0pt.us-east-1.rds.amazonaws.com
@@ -20,6 +22,8 @@ echo --target $instanceId \
      --parameters host="${host}",portNumber="${servicePort}",localPortNumber="${localPort}"
 
 aws ssm start-session \
-     --target $instanceId \
+     --profile "$PROFILE" \
+     --region "$REGION" \
+     --target "$instanceId" \
      --document-name AWS-StartPortForwardingSessionToRemoteHost \
      --parameters host="${host}",portNumber="${servicePort}",localPortNumber="${localPort}"
