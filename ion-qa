@@ -1,9 +1,11 @@
 #!/bin/bash
 
-export AWS_PROFILE=ion-nonprod
-export AWS_REGION=us-east-1
+AWS_PROFILE=ion-nonprod
+AWS_REGION=us-east-1
 
 instanceId=$(aws ec2 describe-instances \
+     --profile "$AWS_PROFILE" \
+     --region "$AWS_REGION" \
      --filters "Name=tag:aws:autoscaling:groupName,Values=bastion*-qa" \
      --query "Reservations[*].Instances[?State.Name == 'running'].InstanceId" \
      --output text)
@@ -20,6 +22,8 @@ echo --target $instanceId \
      --parameters host="${host}",portNumber="${servicePort}",localPortNumber="${localPort}"
 
 aws ssm start-session \
+     --profile "$AWS_PROFILE" \
+     --region "$AWS_REGION" \
      --target $instanceId \
      --document-name AWS-StartPortForwardingSessionToRemoteHost \
      --parameters host="${host}",portNumber="${servicePort}",localPortNumber="${localPort}"
