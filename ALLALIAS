@@ -64,3 +64,4 @@ alias scale-ion-prod='aws autoscaling set-desired-capacity \                    
 alias localCodegen='cd integrations/spectrum; CODA_URL=http://localhost:5000/graphql pnpm codegen; cd ../../'
 alias ax='aws-vault exec'
 alias jira='open https://redventures.atlassian.net/jira/your-work'
+alias devlog='rm -/Users/ldyer/Desktop/code/Documentation/logs.txt; npm run dev 2>&1 | tee /Users/ldyer/Desktop/code/Documentation/logs.txt'
