@@ -1,18 +1,35 @@
 # A task generator to keep track of my daily work items.
+# Writes directly to $WORK_JOURNAL_DIR/YYYY/MM/DD.md
+
+# Check if WORK_JOURNAL_DIR is set
+if [ -z "$WORK_JOURNAL_DIR" ]; then
+  echo "Error: WORK_JOURNAL_DIR is not set."
+  echo "Add 'export WORK_JOURNAL_DIR=~/path/to/work-journal' to your ~/.zshrc"
+  exit 1
+fi
+
+# Get date components
+YEAR=$(date +%Y)
+MONTH=$(date +%m)
+DAY=$(date +%d)
+TIME=$(date +%c)
+
+# Build the file path
+JOURNAL_PATH="$WORK_JOURNAL_DIR/$YEAR/$MONTH"
+JOURNAL_FILE="$JOURNAL_PATH/$DAY.md"
+
+# Create directory structure if needed
+mkdir -p "$JOURNAL_PATH"
 
 if [[ $1 == "!" ]]; then
-	vim ~/Desktop/.TASKS.txt
+  vim "$JOURNAL_FILE"
 else
-TIME=$(date +%c)
-    echo "Enter your task: "
-    read TASK
-    if [ "$TASK" = "" ]
-    then
-      echo "Task abandoned"
-    else
-      touch ~/Desktop/.TASKS.txt
-      echo "# ${TIME}: \n- ${TASK}" >> ~/Desktop/.TASKS.txt
-      echo "" >> ~/Desktop/.TASKS.txt
-      echo "Task has been added."
-    fi
+  echo "Enter your task: "
+  read TASK
+  if [ "$TASK" = "" ]; then
+    echo "Task abandoned"
+  else
+    echo "# ${TIME}: \n- ${TASK}\n" >> "$JOURNAL_FILE"
+    echo "Task added to $YEAR/$MONTH/$DAY.md"
+  fi
 fi

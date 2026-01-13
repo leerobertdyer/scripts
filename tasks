@@ -1,4 +1,21 @@
-# A simple cat command to show all current tasks
+# Shows today's tasks from work journal
 
-cat ~/Desktop/.TASKS.txt
+# Check if WORK_JOURNAL_DIR is set
+if [ -z "$WORK_JOURNAL_DIR" ]; then
+  echo "Error: WORK_JOURNAL_DIR is not set."
+  echo "Add 'export WORK_JOURNAL_DIR=~/path/to/work-journal' to your ~/.zshrc"
+  exit 1
+fi
 
+# Get today's file path
+YEAR=$(date +%Y)
+MONTH=$(date +%m)
+DAY=$(date +%d)
+JOURNAL_FILE="$WORK_JOURNAL_DIR/$YEAR/$MONTH/$DAY.md"
+
+if [ -f "$JOURNAL_FILE" ]; then
+  cat "$JOURNAL_FILE"
+else
+  echo "No tasks yet for today ($YEAR/$MONTH/$DAY.md)"
+  echo "Run 'task' to add your first entry."
+fi
