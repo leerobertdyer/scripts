@@ -1,12 +1,17 @@
-# A task generator to keep track of my daily work items.
-# Writes directly to $WORK_JOURNAL_DIR/YYYY/MM/DD.md
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Check if WORK_JOURNAL_DIR is set
-if [ -z "$WORK_JOURNAL_DIR" ]; then
+# Check if WORK_JOURNAL_DIR is set (safe with set -u)
+if [ -z "${WORK_JOURNAL_DIR:-}" ]; then
   echo "Error: WORK_JOURNAL_DIR is not set."
   echo "Add 'export WORK_JOURNAL_DIR=~/path/to/work-journal' to your ~/.zshrc"
   exit 1
 fi
+
+cd "$WORK_JOURNAL_DIR"
+
+# Sync first (keeps multiple machines happy)
+git pull --rebase --autostash --quiet
 
 # Get date components
 YEAR=$(date +%Y)
@@ -21,15 +26,25 @@ JOURNAL_FILE="$JOURNAL_PATH/$DAY.md"
 # Create directory structure if needed
 mkdir -p "$JOURNAL_PATH"
 
-if [[ $1 == "!" ]]; then
+if [[ "${1:-}" == "!" ]]; then
   vim "$JOURNAL_FILE"
 else
   echo "Enter your task: "
-  read TASK
-  if [ "$TASK" = "" ]; then
+  read -r TASK
+  if [ -z "$TASK" ]; then
     echo "Task abandoned"
-  else
-    echo "# ${TIME}: \n- ${TASK}\n" >> "$JOURNAL_FILE"
-    echo "Task added to $YEAR/$MONTH/$DAY.md"
+    exit 0
   fi
+
+  printf "# %s:\n- %s\n\n" "$TIME" "$TASK" >> "$JOURNAL_FILE"
+  echo "Task added to $YEAR/$MONTH/$DAY.md"
+fi
+
+# Commit + push if anything changed
+git add "$JOURNAL_FILE"
+
+if ! git diff --cached --quiet; then
+  git commit -m "journal: $YEAR-$MONTH-$DAY" --quiet
+  git push --quiet
+  echo "Synced."
 fi
